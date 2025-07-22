@@ -1,39 +1,70 @@
 # Plus-One
-Problem Description
-You are given a non-empty array of digits representing a non-negative integer, where each element in the array represents a single digit of the number. The most significant digit is at the beginning of the array, and the least significant digit is at the end. The task is to add one to this integer and return the result as an array of digits.
+Plus One – LeetCode Problem
+📌 Problem Statement
+You are given a non-empty array of digits representing a non-negative integer. The digits are stored such that the most significant digit is at the head of the list, and each element in the array contains a single digit.
 
-Example
+Increment the large integer by one and return the resulting array of digits.
+
+✅ Example 1:
 Input:
+
+ini
+Copy
+Edit
 digits = [1, 2, 3]
 Output:
+
+csharp
+Copy
+Edit
 [1, 2, 4]
 Explanation:
 123 + 1 = 124
 
-Approach
-Start from the last digit and add 1.
+✅ Example 2:
+Input:
 
-If the digit becomes 10, set it to 0 and carry over to the previous digit.
+ini
+Copy
+Edit
+digits = [9, 9, 9]
+Output:
 
-Continue until:
+csharp
+Copy
+Edit
+[1, 0, 0, 0]
+🔍 Approach
+Start from the last digit.
 
-No carry remains, or
+Add 1 to it.
 
-All digits processed → prepend 1 if carry remains.
+If it becomes 10, set it to 0 and carry over.
 
-Algorithm
-Traverse the list in reverse order.
+Repeat until there is no carry.
 
-Add 1 to the last digit.
+If the entire list is processed and carry remains, insert 1 at the front.
 
-Handle carry by setting digit to 0 if it becomes 10.
+🕒 Complexity
+Time Complexity: O(n)
 
-If all digits become 0, insert 1 at the start.
+Space Complexity: O(1) (in-place modification)
 
-Return the modified list.
+💻 Code (Python)
+python
+Copy
+Edit
+class Solution:
+    def plusOne(self, digits):
+        n = len(digits)
+        for i in range(n - 1, -1, -1):
+            digits[i] += 1
+            digits[i] %= 10
+            if digits[i] != 0:
+                return digits
+        return [1] + digits
+🔗 Related Topics
+Arrays
 
-Complexity
-Time Complexity: O(n) (traverse digits once)
-
-Space Complexity: O(1) (in-place, ignoring output list)
+Math
 
